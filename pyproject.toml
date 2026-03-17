@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.backends"
+
+[project]
+name = "querygpt"
+version = "0.1.0"
+description = "Natural Language to SQL - translate plain English questions into SQL queries"
+authors = [{ name = "Mukunda Katta" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0",
+    "click>=8.0",
+    "rich>=13.0",
+    "sqlparse>=0.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+querygpt = "querygpt.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/querygpt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
